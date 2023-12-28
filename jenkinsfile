@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+    triggers {
+        pollSCM('*/5 * * * *') 
+    }
+
+    stages {
+        stage('Init') {
+            steps {
+                sh 'echo "Initializing variables..."'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'docker build -t microservices-image .'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'npm test'
+            }
+        }
+        
+        stage('Clean') {
+            steps {
+                sh 'docker rmi microServices'
+            }
+        }
+    }
+}
