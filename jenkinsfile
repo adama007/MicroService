@@ -4,8 +4,8 @@ pipeline{
         pollSCM('*/5 * * * *') 
     }
     tools{
-        node '21'
-    }
+        label '21'
+}
     environment {
         // Initialize global variables here
         DOCKER_REGISTRY = 'your-docker-registry-url'
