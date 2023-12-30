@@ -4,7 +4,7 @@ pipeline{
         pollSCM('*/5 * * * *') 
     }
     tools{
-        label '21'
+    nodejs "node"
 }
     environment {
         // Initialize global variables here
