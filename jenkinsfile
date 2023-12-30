@@ -32,11 +32,12 @@ pipeline{
                 git branch: 'main', credentialsId:'github', url:'https://github.com/adama007/MicroService'
             }
         }
-        stage("Build Application"){
-            steps{
-                sh "npm start"
-            }
-        }
+        stage('Build') {
+      steps {
+        sh 'npm install'
+         sh '<<Build Command>>'
+      }
+    }  
         stage("Test Application"){
             steps{
                 sh "npm test"
